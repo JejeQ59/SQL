@@ -100,8 +100,30 @@ select f.NOM_FABRICANT , count(NUMERO_TICKET) from fabricant as f inner join mar
 inner join article as a on m.ID_MARQUE = a.ID_MARQUE inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE group by f.NOM_FABRICANT;
 
 -- Question 26
-select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME, sum(quantite) as quantite_vendue from article as a inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE where ANNEE = 2016
+select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME, sum(quantite) as quantite_vendue from article as a 
+inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE 
+where ANNEE = 2016
 group by a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME order by 4 desc limit 20;
 
+-- Question 27
+select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME, sum(quantite) as quantite_vendue, t.nom_type from article as a 
+inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE 
+inner join type as t on a.ID_TYPE = t.ID_TYPE where ANNEE = 2016 and t.NOM_TYPE = 'Trappiste'
+group by a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME order by 4 desc limit 5;
+
+-- Question 28
+select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME,
+(select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2015, 
+(select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2016 ,
+(((select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE)) / (select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE)) * 100 as variation
+from article as a where (((select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE)) / (select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE)) * 100 between -1 and 1; 
 
 
