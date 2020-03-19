@@ -15,3 +15,6 @@ where v.QUANTITE >= 50;
 
 -- Question 5
 select * from ticket where ANNEE = 2014 and month(DATE_VENTE) = 3;
+
+-- Question 6
+select * from ticket where ANNEE = 2014 and (month(DATE_VENTE) = 3 or month(DATE_VENTE) = 4);
