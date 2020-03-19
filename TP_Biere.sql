@@ -153,13 +153,16 @@ update article as a inner join type as t on a.id_type = t.ID_TYPE
 INNER JOIN couleur as c ON c.ID_Couleur = a.ID_COULEUR set prix_achat = prix_achat * 1.1 where t.NOM_TYPE = 'Trappiste' and c.NOM_COULEUR = 'Blonde';
 
 -- Question 33
- update article as a inner join (select min(titrage) as min_tit, a.id_couleur, a.id_type from article as a inner join couleur as c on a.id_couleur = c.id_couleur
- inner join type as t on a.id_type = t.id_type group by  a.id_couleur, a.id_type) as art
+
+SET SQL_SAFE_UPDATES=0;
+
+ update article as a inner join (select min(titrage) as min_tit, a1.id_couleur, a1.id_type from article as a1 inner join couleur as c on a1.id_couleur = c.id_couleur
+ inner join type as t on a1.id_type = t.id_type group by  a1.id_couleur, a1.id_type) as art
  on art.id_couleur = a.id_couleur and art.id_type = a.id_type set titrage = min_tit
- where titrage is null and a.id_couleur is not null and a.id_type is not null;  
+ where titrage is null;  
 
 -- Question 34
-
+ delete article, type from article inner join type on article.id_type = type.id_type where type.nom_type = 'Bière Aromatisée'; 
 
 
 
