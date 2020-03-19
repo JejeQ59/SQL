@@ -42,3 +42,7 @@ group by NUMERO_TICKET having sum(quantite) > 500  order by 1 desc;
 select ID_ARTICLE, NOM_ARTICLE, VOLUME, TITRAGE, t.NOM_TYPE from article as a inner join type as t on a.ID_TYPE = t.ID_TYPE
 where t.NOM_TYPE = 'Trappiste';
 
+-- Question 14
+select m.NOM_MARQUE, c.NOM_CONTINENT from marque as m inner join pays as p on m.ID_PAYS = p.ID_PAYS inner join continent as c on p.ID_CONTINENT = c.ID_CONTINENT
+where c.NOM_CONTINENT = 'Afrique';
+
