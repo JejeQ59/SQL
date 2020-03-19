@@ -87,6 +87,9 @@ select numero_ticket from ventes where id_article in(
 select ID_ARTICLE from ventes where annee = 2014 and NUMERO_TICKET = 856);
 
 -- Question 23
+select ID_ARTICLE, NOM_ARTICLE from article where TITRAGE > (
+select max(titrage) from article as a
+inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste');
 
 
 
