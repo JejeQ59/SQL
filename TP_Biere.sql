@@ -67,5 +67,22 @@ select sum(QUANTITE), id_article, annee from ventes where annee in (2014, 2015, 
 -- Question 20
 select ID_ARTICLE, NOM_ARTICLE from article where id_article not in (select id_article from ventes where annee = 2014);  
 
+-- Question 21
+select distinct NOM_PAYS from pays as p inner join marque as m on p.ID_PAYS = m.ID_PAYS 
+inner join article as a on m.ID_MARQUE = a.ID_MARQUE 
+inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste';
+
+select distinct NOM_PAYS from pays as p inner join marque as m on p.ID_PAYS = m.ID_PAYS 
+where m.ID_MARQUE in ( 
+select m2.id_marque from marque as m2 inner join article as a on m2.ID_MARQUE = a.ID_MARQUE
+inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste' );
+
+select distinct NOM_PAYS from pays as p inner join marque as m on p.ID_PAYS = m.ID_PAYS 
+where m.ID_MARQUE in ( 
+select m2.id_marque from marque as m2 where m2.ID_MARQUE in (select ID_MARQUE from article as a
+inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste' ));
+
+-- Question 22
+
 
 
