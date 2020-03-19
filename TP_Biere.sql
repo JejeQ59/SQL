@@ -24,3 +24,6 @@ select * from ticket where ANNEE = 2014 and (month(DATE_VENTE) = 3 or month(DATE
 
 -- Question 8
 select ID_ARTICLE, NOM_ARTICLE, c.NOM_COULEUR from article as a inner join couleur as c on a.ID_Couleur = c.ID_Couleur order by c.NOM_COULEUR;
+
+-- Question 9
+select ID_ARTICLE, NOM_ARTICLE, id_couleur from article where ID_Couleur is null;
