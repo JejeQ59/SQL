@@ -46,3 +46,7 @@ where t.NOM_TYPE = 'Trappiste';
 select m.NOM_MARQUE, c.NOM_CONTINENT from marque as m inner join pays as p on m.ID_PAYS = p.ID_PAYS inner join continent as c on p.ID_CONTINENT = c.ID_CONTINENT
 where c.NOM_CONTINENT = 'Afrique';
 
+-- Question 15
+select a.NOM_ARTICLE, c.NOM_CONTINENT from article as a inner join marque as m on a.ID_MARQUE = m.ID_MARQUE inner join pays as p on m.ID_PAYS = p.ID_PAYS inner join continent as c on p.ID_CONTINENT = c.ID_CONTINENT
+where c.NOM_CONTINENT = 'Afrique';
+
