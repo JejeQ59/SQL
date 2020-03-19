@@ -62,6 +62,7 @@ group by v.ANNEE;
 select sum(QUANTITE), id_article, annee from ventes where annee = 2016 group by id_article, annee order by id_article;
 
 -- Question 19
+select sum(QUANTITE), id_article, annee from ventes where annee in (2014, 2015, 2016) group by id_article, annee order by id_article;
 
 select * from ventes where id_article = 1063 and annee = 2016
 
