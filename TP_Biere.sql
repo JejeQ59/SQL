@@ -7,7 +7,7 @@ select NUMERO_TICKET from ventes where ID_ARTICLE = 500;
 select * from ticket where DATE_VENTE = '2014-01-15';
 
 -- Question 3
-select * from ticket where DATE_VENTE between '2014-01-15' and '2014-01-17';
+select * from ticket where DATE_VENTE = '2014-01-15' and DATE_VENTE = '2014-01-17';
 
 -- Question 4
 select distinct NOM_ARTICLE from article as a inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE
@@ -27,3 +27,6 @@ select ID_ARTICLE, NOM_ARTICLE, c.NOM_COULEUR from article as a inner join coule
 
 -- Question 9
 select ID_ARTICLE, NOM_ARTICLE, id_couleur from article where ID_Couleur is null;
+
+-- Question 10
+select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET order by 1 desc;
