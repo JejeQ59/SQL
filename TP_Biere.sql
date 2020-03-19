@@ -4,4 +4,4 @@
 select NUMERO_TICKET from ventes where ID_ARTICLE = 500;
 
 -- Question 2
-select * from ticket where date_vente 
+select * from ticket where DATE_VENTE = '2014-01-15'
