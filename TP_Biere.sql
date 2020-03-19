@@ -116,7 +116,7 @@ select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME,
 (select sum(quantite) from ventes v1
 where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2015, 
 (select sum(quantite) from ventes v1
-where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2016 ,
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2016 ,
 (((select sum(quantite) from ventes v1
 where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
 where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE)) / (select sum(quantite) from ventes v1
@@ -125,5 +125,16 @@ from article as a where (((select sum(quantite) from ventes v1
 where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
 where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE)) / (select sum(quantite) from ventes v1
 where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE)) * 100 between -1 and 1; 
+
+-- Question 29
+select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME,
+(select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2015, 
+(select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2016, 
+((select sum(quantite) from ventes v1
+where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
+where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE))   as variation
+from article as a order by variation
 
 
