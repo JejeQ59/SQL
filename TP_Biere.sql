@@ -135,6 +135,14 @@ where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) as quantite_2016,
 ((select sum(quantite) from ventes v1
 where ANNEE = 2016 and a.ID_ARTICLE = v1.ID_ARTICLE) - (select sum(quantite) from ventes v1
 where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE))   as variation
-from article as a order by variation
+from article as a order by variation;
+
+-- Question 30
+select * from ticket where numero_ticket not in (select numero_ticket from ventes);
+
+-- Question 31
+select sum(quantite) as qte, v.id_article from ventes as v where annee = 2016 group by id_article order by qte desc limit 1
+
+
 
 
