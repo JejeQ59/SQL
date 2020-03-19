@@ -38,4 +38,7 @@ select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET having su
 select sum(quantite), NUMERO_TICKET from ventes where quantite < 50
 group by NUMERO_TICKET having sum(quantite) > 500  order by 1 desc;
 
+-- Question 13
+select ID_ARTICLE, NOM_ARTICLE, VOLUME, TITRAGE, t.NOM_TYPE from article as a inner join type as t on a.ID_TYPE = t.ID_TYPE
+where t.NOM_TYPE = 'Trappiste';
 
