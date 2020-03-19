@@ -30,3 +30,8 @@ select ID_ARTICLE, NOM_ARTICLE, id_couleur from article where ID_Couleur is null
 
 -- Question 10
 select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET order by 1 desc;
+
+-- Question 11
+select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET having sum(quantite) > 500 order by 1 desc;
+
+-- Question 12
