@@ -99,5 +99,9 @@ on a.id_couleur = c.id_couleur group by c.NOM_COULEUR;
 select f.NOM_FABRICANT , count(NUMERO_TICKET) from fabricant as f inner join marque as m on f.ID_FABRICANT = m.ID_FABRICANT 
 inner join article as a on m.ID_MARQUE = a.ID_MARQUE inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE group by f.NOM_FABRICANT;
 
+-- Question 26
+select a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME, sum(quantite) as quantite_vendue from article as a inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE where ANNEE = 2016
+group by a.ID_ARTICLE, a.NOM_ARTICLE, a.VOLUME order by 4 desc limit 20;
+
 
 
