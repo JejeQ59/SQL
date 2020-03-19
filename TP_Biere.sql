@@ -54,5 +54,12 @@ where c.NOM_CONTINENT = 'Afrique';
 select v.NUMERO_TICKET, v.ANNEE, ROUND(sum(a.prix_achat * quantite * 1.15), 2) as Prix_total_ticket from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE
 group by v.NUMERO_TICKET, v.ANNEE;
 
+-- Question 17
+select v.ANNEE, ROUND(sum(a.prix_achat * quantite * 1.15), 2) as CA from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE
+group by v.ANNEE;
+
+-- Question 18
+
+
 select v.NUMERO_TICKET, v.ANNEE, prix_achat, quantite from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE where NUMERO_TICKET = 1 order by v.annee;
 
