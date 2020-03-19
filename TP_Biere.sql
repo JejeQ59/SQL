@@ -35,3 +35,7 @@ select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET order by 
 select sum(quantite), NUMERO_TICKET from ventes group by NUMERO_TICKET having sum(quantite) > 500 order by 1 desc;
 
 -- Question 12
+select sum(quantite), NUMERO_TICKET from ventes where quantite < 50
+group by NUMERO_TICKET having sum(quantite) > 500  order by 1 desc;
+
+
