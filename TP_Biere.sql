@@ -96,7 +96,7 @@ select sum(quantite), c.NOM_COULEUR  from ventes as v inner join article as a on
 on a.id_couleur = c.id_couleur group by c.NOM_COULEUR;
 
 -- Question 25
-select f.NOM_FABRICANT , count(NUMERO_TICKET) from fabricant as f inner join marque as m on f.ID_FABRICANT = m.ID_FABRICANT 
+select f.NOM_FABRICANT , count(distinct NUMERO_TICKET) from fabricant as f inner join marque as m on f.ID_FABRICANT = m.ID_FABRICANT 
 inner join article as a on m.ID_MARQUE = a.ID_MARQUE inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE group by f.NOM_FABRICANT;
 
 -- Question 26
@@ -141,7 +141,24 @@ from article as a order by variation;
 select * from ticket where numero_ticket not in (select numero_ticket from ventes);
 
 -- Question 31
-select sum(quantite) as qte, v.id_article from ventes as v where annee = 2016 group by id_article order by qte desc limit 1
+SELECT a.id_article, a.nom_article , SUM(v.QUANTITE) FROM article as a
+INNER JOIN ventes as v on a.ID_ARTICLE = v.ID_ARTICLE
+WHERE v.ANNEE = 2016 
+GROUP BY a.ID_ARTICLE
+HAVING SUM(v.QUANTITE) >= (SELECT SUM(QUANTITE-(QUANTITE*15/100)) as quantite FROM ventes
+									WHERE ANNEE = 2016 GROUP BY ID_ARTICLE ORDER BY quantite DESC LIMIT 1);
+
+-- Question 32
+update article as a inner join type as t on a.id_type = t.ID_TYPE 
+INNER JOIN couleur as c ON c.ID_Couleur = a.ID_COULEUR set prix_achat = prix_achat * 1.1 where t.NOM_TYPE = 'Trappiste' and c.NOM_COULEUR = 'Blonde';
+
+-- Question 33
+ update article as a inner join (select min(titrage) as min_tit, a.id_couleur, a.id_type from article as a inner join couleur as c on a.id_couleur = c.id_couleur
+ inner join type as t on a.id_type = t.id_type group by  a.id_couleur, a.id_type) as art
+ on art.id_couleur = a.id_couleur and art.id_type = a.id_type set titrage = min_tit
+ where titrage is null and a.id_couleur is not null and a.id_type is not null;  
+
+-- Question 34
 
 
 
