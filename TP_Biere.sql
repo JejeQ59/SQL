@@ -83,6 +83,10 @@ select m2.id_marque from marque as m2 where m2.ID_MARQUE in (select ID_MARQUE fr
 inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste' ));
 
 -- Question 22
+select numero_ticket from ventes where id_article in(
+select ID_ARTICLE from ventes where annee = 2014 and NUMERO_TICKET = 856);
+
+-- Question 23
 
 
 
