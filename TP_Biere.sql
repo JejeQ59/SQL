@@ -96,6 +96,8 @@ select sum(quantite), c.NOM_COULEUR  from ventes as v inner join article as a on
 on a.id_couleur = c.id_couleur group by c.NOM_COULEUR;
 
 -- Question 25
+select f.NOM_FABRICANT , count(NUMERO_TICKET) from fabricant as f inner join marque as m on f.ID_FABRICANT = m.ID_FABRICANT 
+inner join article as a on m.ID_MARQUE = a.ID_MARQUE inner join ventes as v on a.ID_ARTICLE = v.ID_ARTICLE group by f.NOM_FABRICANT;
 
 
 
