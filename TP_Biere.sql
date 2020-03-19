@@ -91,5 +91,11 @@ select ID_ARTICLE, NOM_ARTICLE from article where TITRAGE > (
 select max(titrage) from article as a
 inner join type as t on a.ID_TYPE = t.ID_TYPE where t.NOM_TYPE = 'Trappiste');
 
+-- Question 24
+select sum(quantite), c.NOM_COULEUR  from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE inner join couleur as c 
+on a.id_couleur = c.id_couleur group by c.NOM_COULEUR;
+
+-- Question 25
+
 
 
