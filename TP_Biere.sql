@@ -59,7 +59,9 @@ select v.ANNEE, ROUND(sum(a.prix_achat * quantite * 1.15), 2) as CA from ventes 
 group by v.ANNEE;
 
 -- Question 18
+select sum(QUANTITE), id_article, annee from ventes where annee = 2016 group by id_article, annee order by id_article;
 
+-- Question 19
 
-select v.NUMERO_TICKET, v.ANNEE, prix_achat, quantite from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE where NUMERO_TICKET = 1 order by v.annee;
+select * from ventes where id_article = 1063 and annee = 2016
 
