@@ -50,3 +50,9 @@ where c.NOM_CONTINENT = 'Afrique';
 select a.NOM_ARTICLE, c.NOM_CONTINENT from article as a inner join marque as m on a.ID_MARQUE = m.ID_MARQUE inner join pays as p on m.ID_PAYS = p.ID_PAYS inner join continent as c on p.ID_CONTINENT = c.ID_CONTINENT
 where c.NOM_CONTINENT = 'Afrique';
 
+-- Question 16
+select v.NUMERO_TICKET, v.ANNEE, ROUND(sum(a.prix_achat * quantite * 1.15), 2) as Prix_total_ticket from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE
+group by v.NUMERO_TICKET, v.ANNEE;
+
+select v.NUMERO_TICKET, v.ANNEE, prix_achat, quantite from ventes as v inner join article as a on v.ID_ARTICLE = a.ID_ARTICLE where NUMERO_TICKET = 1 order by v.annee;
+
