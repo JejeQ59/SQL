@@ -18,3 +18,6 @@ select * from ticket where ANNEE = 2014 and month(DATE_VENTE) = 3;
 
 -- Question 6
 select * from ticket where ANNEE = 2014 and (month(DATE_VENTE) = 3 or month(DATE_VENTE) = 4);
+
+-- Question 7
+select * from ticket where ANNEE = 2014 and (month(DATE_VENTE) = 3 or month(DATE_VENTE) = 6);
