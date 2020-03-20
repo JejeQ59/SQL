@@ -163,6 +163,9 @@ SET SQL_SAFE_UPDATES=0;
 
 -- Question 34
  delete article, type from article inner join type on article.id_type = type.id_type where type.nom_type = 'Bière Aromatisée'; 
+ 
+ -- Question 35 : pas de lignes à effacer mais si jamais il y en a voici la requête :
+ delete from ticket where numero_ticket not in (select numero_ticket from ventes); 
 
 
 
