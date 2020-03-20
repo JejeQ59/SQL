@@ -141,3 +141,6 @@ ADD CONSTRAINT `fk_idexamen_ex`
   REFERENCES `autoecole`.`examen` (`id_examen`)
   ON DELETE RESTRICT
   ON UPDATE CASCADE; 
+  
+-- eleve qui ont au moins échoué une fois à l'examen
+select nom from eleve as e inner join examen_eleve as ee on e.id_eleve = ee.id_eleve
