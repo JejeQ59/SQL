@@ -138,7 +138,7 @@ where ANNEE = 2015 and a.ID_ARTICLE = v1.ID_ARTICLE))   as variation
 from article as a order by variation;
 
 -- Question 30
-select * from ticket where numero_ticket not in (select numero_ticket from ventes);
+select * from ticket where concat(numero_ticket, annee) not in (select concat(numero_ticket, annee) from ventes);
 
 -- Question 31
 SELECT a.id_article, a.nom_article , SUM(v.QUANTITE) FROM article as a
@@ -165,7 +165,7 @@ SET SQL_SAFE_UPDATES=0;
  delete article, type from article inner join type on article.id_type = type.id_type where type.nom_type = 'Bière Aromatisée'; 
  
  -- Question 35 : pas de lignes à effacer mais si jamais il y en a voici la requête :
- delete from ticket where numero_ticket not in (select numero_ticket from ventes); 
+ delete from ticket where concat(numero_ticket, annee) not in (select concat(numero_ticket, annee) from ventes); 
 
 
 
